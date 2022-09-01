@@ -19,30 +19,27 @@ var currentHour = moment().format('h A');
 //showing the current day in the header
 currentDay.text(moment().format('dddd, MMMM Do'));
 
-// //creating timeblocks in the scheduler
+//creating timeblocks in the scheduler
 
 for (var i = 0; i < workingHours.length; i++) {
     createTimeblocks();
 }
 
 function createTimeblocks () {
+    //dom manipulation to create elements in html
     var timeBlockEl = $('<div>').addClass('row time-block');
     var hourEl = $('<span>').addClass('hour col-lg-1 col-md-2').text(workingHours[i])
     var description = $('<textarea>').addClass('description col-lg-10 col-md-8')
     var saveBtn = $('<button class="saveBtn col-lg-1 col-md-2"><i class="fas fa-save"></i></button>')
     var ScheduledHour = i + 9;
     
-
     container.append(timeBlockEl)
     timeBlockEl.append(hourEl, description, saveBtn)
-    
-    console.log(hourEl.text())
 
     timeBlockEl.attr('id', ScheduledHour)
 
     var timeBlock = timeBlockEl.attr('id')
 
-    console.log(timeBlock, moment().hour())
     //logic for color: present
     if (timeBlock == moment().hour()) {
         timeBlockEl.addClass('present')
@@ -59,21 +56,21 @@ function createTimeblocks () {
 //to store descriptions to local storage
 $('.saveBtn').on('click', function() {
     var hourId = $(this).parent().attr('id');
-    localStorage.setItem(hourId, $(this).siblings('.description').val())
+    localStorage.setItem(hourId, $(this).siblings('.description').val().trim())
 
 })
 
 //to call out the saved descriptions
 function renderDescriptions (){
-    $('#9 .description').val(localStorage.getItem('9-hour'));
-    $('#10 .description').val(localStorage.getItem('10-hour'));
-    $('#11 .description').val(localStorage.getItem('11-hour'));
-    $('#12 .description').val(localStorage.getItem('12-hour'));
-    $('#13 .description').val(localStorage.getItem('13-hour'));
-    $('#14 .description').val(localStorage.getItem('14-hour'));
-    $('#15 .description').val(localStorage.getItem('15-hour'));
-    $('#16 .description').val(localStorage.getItem('16-hour'));
-    $('#17 .description').val(localStorage.getItem('17-hour'));
+    $('#9 .description').val(localStorage.getItem('9'));
+    $('#10 .description').val(localStorage.getItem('10'));
+    $('#11 .description').val(localStorage.getItem('11'));
+    $('#12 .description').val(localStorage.getItem('12'));
+    $('#13 .description').val(localStorage.getItem('13'));
+    $('#14 .description').val(localStorage.getItem('14'));
+    $('#15 .description').val(localStorage.getItem('15'));
+    $('#16 .description').val(localStorage.getItem('16'));
+    $('#17 .description').val(localStorage.getItem('17'));
     
 }
 

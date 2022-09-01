@@ -1,5 +1,6 @@
 var currentDay = $('#currentDay');
 var container = $('.container')
+//the working hours array is below, can be simple strings of time, but decided to try and use moment for this
 var workingHours = [
     moment('9 AM', 'h A').format('h A'),
     moment('10 AM', 'h A').format('h A'),
@@ -11,7 +12,6 @@ var workingHours = [
     moment('4 PM', 'h A').format('h A'),
     moment('5 PM', 'h A').format('h A'),
 ]
-// var workingHours = ['9 AM', '10 AM', '11 AM', '12 PM', '1 PM', '2 PM', '3 PM', '4 PM', '5 PM']
 var i = 0
 var currentHour = moment().format('h A');
 

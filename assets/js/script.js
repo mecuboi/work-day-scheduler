@@ -28,9 +28,9 @@ for (var i = 0; i < workingHours.length; i++) {
 function createTimeblocks () {
     //dom manipulation to create elements in html
     var timeBlockEl = $('<div>').addClass('row time-block');
-    var hourEl = $('<span>').addClass('hour col-lg-1 col-md-2').text(workingHours[i])
-    var description = $('<textarea>').addClass('description col-lg-10 col-md-8')
-    var saveBtn = $('<button class="saveBtn col-lg-1 col-md-2"><i class="fas fa-save"></i></button>')
+    var hourEl = $('<span>').addClass('hour col-lg-1 col-md-2 col-sm-3').text(workingHours[i])
+    var description = $('<textarea>').addClass('description col-lg-10 col-md-8 col-sm-6')
+    var saveBtn = $('<button class="saveBtn col-lg-1 col-md-2 col-sm-3"><i class="fas fa-save"></i></button>')
     var ScheduledHour = i + 9;
     
     container.append(timeBlockEl)

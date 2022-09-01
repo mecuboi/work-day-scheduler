@@ -30,18 +30,54 @@ function createTimeblocks () {
     var hourEl = $('<span>').addClass('hour col-lg-1 col-md-2').text(workingHours[i])
     var description = $('<textarea>').addClass('description col-lg-10 col-md-8')
     var saveBtn = $('<button class="saveBtn col-lg-1 col-md-2"><i>💾</i></button>')
+    var ScheduledHour = i + 9;
 
     container.append(timeBlockEl)
     timeBlockEl.append(hourEl, description, saveBtn)
     
     console.log(hourEl.text())
 
-    if (hourEl.text() === currentHour) {
-        timeBlockEl.addClass('present')
-    } 
+    timeBlockEl.attr('id', ScheduledHour + '-hour')
 
+    var timeBlock = timeBlockEl.attr('id')
+
+    console.log(timeBlock, currentHour)
+    //logic for color: present
+    if (workingHours[i] === currentHour) {
+        timeBlockEl.addClass('present')
+    //future logic
+    } else if (currentHour < timeBlock) {
+        timeBlockEl.addClass('future')
+    //past logic
+    } else if (currentHour > timeBlock) {
+        timeBlockEl.addClass('past')
+    }
 }
 
+
+
+$('.saveBtn').on('click', function() {
+    var hourId = $(this).parent().attr('id');
+    localStorage.setItem(hourId, $(this).siblings('.description').val())
+
+})
+
+
+
+function renderDescriptions (){
+    $('#9-hour .description').val(localStorage.getItem('9-hour'));
+    $('#10-hour .description').val(localStorage.getItem('10-hour'));
+    $('#11-hour .description').val(localStorage.getItem('11-hour'));
+    $('#12-hour .description').val(localStorage.getItem('12-hour'));
+    $('#13-hour .description').val(localStorage.getItem('13-hour'));
+    $('#14-hour .description').val(localStorage.getItem('14-hour'));
+    $('#15-hour .description').val(localStorage.getItem('15-hour'));
+    $('#16-hour .description').val(localStorage.getItem('16-hour'));
+    $('#17-hour .description').val(localStorage.getItem('17-hour'));
+    
+}
+
+renderDescriptions()
 
 
 

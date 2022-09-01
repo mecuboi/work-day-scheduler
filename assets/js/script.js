@@ -1,46 +1,33 @@
 var currentDay = $('#currentDay');
 var container = $('.container')
 var workingHours = ['9 AM', '10 AM', '11 AM', '12 PM', '1 PM', '2 PM', '3 PM', '4 PM', '5 PM']
+var i = 0
 
 //showing the current day in the header
 currentDay.text(moment().format('dddd, MMMM Do'));
 
 container
     .append($('<div>')
-    .addClass('time-block'));
+    .addClass('time-block row'));
 var timeBlock = $('.time-block')
 
-//creating the rows in the scheduler
-timeBlock
-    .append($('<div>')
-    .addClass('row'));
-var row = $('.row')
+// //creating the rows in the scheduler
 
-row
-    .append($('<span>')
-    .addClass('hour'));
-var hour = $('.hour')
 
-row
-    .append($('<textarea>')
-    .addClass('description'));
-var description = $('.description')
 
-row
-    .append($('<button>')
-    .addClass('saveBtn'));
-var saveBtn = $('.saveBtn');
+function createTimeblocks () {
+    var timeBlockEl = $('<div>').addClass('time-block row');
+    var hourEl = $('<span>').addClass('hour').text(workingHours[i])
+    var description = $('<textarea>').addClass('.description')
+    var saveBtn = $('<button class="saveBtn"><i>💾</i></button>')
 
-saveBtn
-    .append($('<i>'));
-var saveIcon = $('i');
+    container.append(timeBlockEl)
+    timeBlockEl.append(hourEl, description, saveBtn)
+}
 
-hour.text('9 AM')
-saveIcon.text('💾')
-
-//looping over the rows
-for (var i = 0; i < workingHours.length; i++)
-    
+for (var i = 0; i < workingHours.length; i++) {
+    createTimeblocks();
+}
 
 
 

@@ -19,9 +19,14 @@ var hour = $('.hour')
 row.append($('<textarea>').addClass('description'));
 var description = $('.description')
 
-row.append($('<span>').addClass('saveBtn'));
+row.append($('<button>').addClass('saveBtn'));
 var saveBtn = $('.saveBtn');
 
+saveBtn.append($('<i>'));
+var saveIcon = $('i');
+
+hour.text('9AM')
+saveIcon.text('💾')
 
 
 
